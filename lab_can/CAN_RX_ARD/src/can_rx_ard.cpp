@@ -15,9 +15,6 @@ void setup() {
     CAN_cfg.rx_pin_id = GPIO_NUM_22;
     /* create a queue for CAN receiving: 10 frames */
     CAN_cfg.rx_queue = xQueueCreate(10,sizeof(CAN_frame_t));
-    //initialize CAN Module
-    ESP32Can.CANInit();
-
     CAN_filter_t r_filter;
     r_filter.FM = Single_Mode;
     r_filter.ACR0 = 0x00;
@@ -28,7 +25,10 @@ void setup() {
     r_filter.AMR1 = 0x1F;
     r_filter.AMR2 = 0xFF;
     r_filter.AMR3 = 0xFF;
-    // ESP32Can.CANConfigFilter(&r_filter);
+    ESP32Can.CANConfigFilter(&r_filter);
+
+    //initialize CAN Module
+    ESP32Can.CANInit();
 }
 
 void loop() {
