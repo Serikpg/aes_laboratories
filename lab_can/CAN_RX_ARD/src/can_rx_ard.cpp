@@ -19,7 +19,7 @@ void setup() {
     CAN_cfg.rx_queue = xQueueCreate(10,sizeof(CAN_frame_t));
     CAN_filter_t r_filter;
     r_filter.FM = Single_Mode;
-    r_filter.ACR0 = 0x01;
+    r_filter.ACR0 = 0x00;
     r_filter.ACR1 = 0x80; // only want to receive ID == 4
     r_filter.ACR2 = 0x00;
     r_filter.ACR3 = 0x00;
@@ -30,6 +30,7 @@ void setup() {
     ESP32Can.CANConfigFilter(&r_filter);
 
     pinMode(PIN_LED, OUTPUT);
+    digitalWrite(PIN_LED, HIGH);
 
     //initialize CAN Module
     ESP32Can.CANInit();
@@ -55,13 +56,13 @@ void loop() {
     else {
       printf(" from %d, DLC %d, Data: ",idField,dataFieldSize);
       for(int i = 0; i < dataFieldSize; i++) {
-        printf("%d",rx_frame.data.u8[i]);
+        // printf("%d",rx_frame.data.u8[i]);
       }
-      printf("\n");
+      // printf("\n");
 
       if(idField == 4) {
-        // only receive the 1st byte no matter the size
-        unsigned char rxdata = rx_frame.data.u8[0];
+        unsigned short rxdata = ((unsigned short)(rx_frame.data.u8[1] << 8) | (unsigned short)rx_frame.data.u8[0]);
+        printf( "data received %d\n", rxdata);
         if (rxdata > 50) digitalWrite(PIN_LED, HIGH);
         else digitalWrite(PIN_LED, LOW);
       }
