@@ -8,9 +8,9 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/laboratoris/aes/Documents/PlatformIO/Projects/CAN_TX_ARD/include",
-                "/home/laboratoris/aes/Documents/PlatformIO/Projects/CAN_TX_ARD/src",
-                "/home/laboratoris/aes/Documents/PlatformIO/Projects/CAN_TX_ARD/.pio/libdeps/az-delivery-devkit-v4/ESP32CAN/src",
+                "/home/laboratoris/aes/Escriptori/aes_laboratories/lab_can/CAN_TX_ARD/include",
+                "/home/laboratoris/aes/Escriptori/aes_laboratories/lab_can/CAN_TX_ARD/src",
+                "/home/laboratoris/aes/Escriptori/aes_laboratories/lab_can/CAN_TX_ARD/.pio/libdeps/az-delivery-devkit-v4/ESP32CAN/src",
                 "/home/laboratoris/aes/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "/home/laboratoris/aes/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "/home/laboratoris/aes/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -245,9 +245,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/laboratoris/aes/Documents/PlatformIO/Projects/CAN_TX_ARD/include",
-                    "/home/laboratoris/aes/Documents/PlatformIO/Projects/CAN_TX_ARD/src",
-                    "/home/laboratoris/aes/Documents/PlatformIO/Projects/CAN_TX_ARD/.pio/libdeps/az-delivery-devkit-v4/ESP32CAN/src",
+                    "/home/laboratoris/aes/Escriptori/aes_laboratories/lab_can/CAN_TX_ARD/include",
+                    "/home/laboratoris/aes/Escriptori/aes_laboratories/lab_can/CAN_TX_ARD/src",
+                    "/home/laboratoris/aes/Escriptori/aes_laboratories/lab_can/CAN_TX_ARD/.pio/libdeps/az-delivery-devkit-v4/ESP32CAN/src",
                     "/home/laboratoris/aes/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "/home/laboratoris/aes/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "/home/laboratoris/aes/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",

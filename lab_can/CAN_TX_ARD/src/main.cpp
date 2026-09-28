@@ -7,8 +7,10 @@ CAN_device_t CAN_cfg;
 void sendMessageType1();
 void sendMessageType2();
 void sendMessageType3();
+void sendPotenciometer();
 
 int8_t counter=0;
+const int potentiometerPin = GPIO_NUM_34;
 
 
 void setup() {
@@ -18,6 +20,7 @@ void setup() {
     CAN_cfg.speed=CAN_SPEED_100KBPS;
     CAN_cfg.tx_pin_id = GPIO_NUM_21;
     CAN_cfg.rx_pin_id = GPIO_NUM_22;
+
     //initialize CAN Module
     ESP32Can.CANInit();
 
@@ -25,9 +28,11 @@ void setup() {
 
 void loop() {
 
-  sendMessageType1();
-  sendMessageType2();
-  sendMessageType3();
+  //sendMessageType1();
+  //sendMessageType2();
+  //sendMessageType3();
+
+  sendPotenciometer();
 
 }
 
@@ -126,3 +131,28 @@ void sendMessageType3() {
   delay(2000);
 
 }
+void sendPotenciometer() {
+
+  int rawValue = analogRead(potentiometerPin); // Read the analog input
+  Serial.println(rawValue);
+
+
+  CAN_frame_t tx_frame;
+  
+  tx_frame.FIR.B.FF = CAN_frame_std;
+  tx_frame.FIR.B.RTR = CAN_no_RTR; //before it was: tx_frame_1
+  tx_frame.MsgID = 4;
+  tx_frame.FIR.B.DLC = 2;
+
+  tx_frame.data.u8[0] = rawValue&0xFF;
+  tx_frame.data.u8[1] = rawValue&0xFF00;
+
+
+    int ret_code = ESP32Can.CANWriteFrame(&tx_frame);
+  printf("Transmitting CAN frame. Return code: ");
+  printf("%d\n",ret_code);
+  
+  delay(1000);
+
+}
+
